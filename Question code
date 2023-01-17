@@ -1,6 +1,7 @@
 #include<bits/stdc++.h>
 
 using namespace std;
+int columnIndex;
 //part 1 create a 2D array with randomly generated values between 0 and 100
 void create2DMatrix(int r,int c, vector<vector<int> >& result){
     
@@ -15,14 +16,18 @@ void create2DMatrix(int r,int c, vector<vector<int> >& result){
     }
 }
 // comparator function
-bool cmp(const vector<int>& a, const vector<int>& b){
-    return a[1]<b[1];
+bool cmp(vector<int> x,vector<int> y) {
+    return x[columnIndex - 1] < y[columnIndex - 1];
 }
 
+
 // part 2 sort the 2D array columnwise
-void customSort(vector<vector<int> >& result){
-    sort(result.begin(),result.end(),cmp);
+void customSort(vector<vector<int>> &arr,int columnIndex) {
+    sort(arr.begin(),arr.end(),comparator);
 }
+
+
+
 
 void print(int n,int m, vector<vector<int> >& result){
     for(int i=0;i<n;i++){
@@ -38,10 +43,11 @@ int main(){
     int row,column;
     cin>>row>>column;
     create2DMatrix(row,column,ans);
+    cin>>columnIndex;
     cout<<"array before sorting"<<endl;
     print(row,column,ans);
 
-    customSort(ans);
+    customSort(ans,columnIndex);
     cout<<"array after sorting"<<endl;
     print(row,column,ans);
 
