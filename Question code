@@ -1,0 +1,50 @@
+#include<bits/stdc++.h>
+
+using namespace std;
+//part 1 create a 2D array with randomly generated values between 0 and 100
+void create2DMatrix(int r,int c, vector<vector<int> >& result){
+    
+    for(int i=0;i<r;i++){
+        vector<int> temp;
+        for(int j=0;j<c;j++){
+            int val=(rand()%101);
+            temp.push_back(val);
+            
+        }
+        result.push_back(temp);
+    }
+}
+
+bool cmp(const vector<int>& a, const vector<int>& b){
+    return a[1]<b[1];
+}
+
+// part 2 sort the 2D array columnwise
+void customSort(vector<vector<int> >& result){
+    sort(result.begin(),result.end(),cmp);
+}
+
+void print(int n,int m, vector<vector<int> >& result){
+    for(int i=0;i<n;i++){
+        for(int j=0;j<m;j++){
+            cout<<result[i][j]<<" ";
+        }
+        cout<<endl;
+    }
+}
+
+int main(){
+    vector<vector<int> > ans;
+    int row,column;
+    cin>>row>>column;
+    create2DMatrix(row,column,ans);
+    cout<<"array before sorting"<<endl;
+    print(row,column,ans);
+
+    customSort(ans);
+    cout<<"array after sorting"<<endl;
+    print(row,column,ans);
+
+
+    return 0;
+}
