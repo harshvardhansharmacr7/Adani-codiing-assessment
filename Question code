@@ -23,7 +23,7 @@ bool cmp(vector<int> x,vector<int> y) {
 
 // part 2 sort the 2D array columnwise
 void customSort(vector<vector<int>> &arr,int columnIndex) {
-    sort(arr.begin(),arr.end(),comparator);
+    sort(arr.begin(),arr.end(),cmp);
 }
 
 
